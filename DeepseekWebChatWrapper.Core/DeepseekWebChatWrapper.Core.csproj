@@ -23,6 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="System.Threading.RateLimiting" Version="10.0.14" />
       <PackageReference Include="Wasmtime" Version="48.0.2" />
     </ItemGroup>
 

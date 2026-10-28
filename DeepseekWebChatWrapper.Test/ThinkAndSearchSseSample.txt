@@ -1,0 +1,1888 @@
+﻿event: ready
+data: {"request_message_id":3,"response_message_id":4,"model_type":"default"}
+
+event: update_session
+data: {"updated_at":1793156012.723341}
+
+data: {"v":{"response":{"message_id":4,"parent_id":3,"model":"","role":"ASSISTANT","thinking_enabled":true,"ban_edit":false,"ban_regenerate":false,"status":"WIP","incomplete_message":null,"accumulated_token_usage":42,"feedback":null,"inserted_at":1793156012.7128808,"search_enabled":true,"fragments":[{"id":2,"type":"THINK","content":"用户","elapsed_secs":null,"references":[],"stage_id":1}],"conversation_mode":"DEFAULT","has_pending_fragment":false,"auto_continue":false,"search_triggered":true,"extra_search_providers":[]}}}
+
+data: {"p":"response/conversation_mode","v":"DEEP_SEARCH"}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"想知道"}
+
+data: {"v":"今天"}
+
+data: {"v":"（"}
+
+data: {"v":"202"}
+
+data: {"v":"6"}
+
+data: {"v":"年"}
+
+data: {"v":"10"}
+
+data: {"v":"月"}
+
+data: {"v":"28"}
+
+data: {"v":"日"}
+
+data: {"v":"）"}
+
+data: {"v":"的"}
+
+data: {"v":"新闻"}
+
+data: {"v":"。"}
+
+data: {"v":"我需要"}
+
+data: {"v":"搜索"}
+
+data: {"v":"中文"}
+
+data: {"v":"新闻"}
+
+data: {"v":"。"}
+
+data: {"v":"为了"}
+
+data: {"v":"全面"}
+
+data: {"v":"获取"}
+
+data: {"v":"信息"}
+
+data: {"v":"，"}
+
+data: {"v":"我将"}
+
+data: {"v":"同时"}
+
+data: {"v":"进行"}
+
+data: {"v":"多项"}
+
+data: {"v":"搜索"}
+
+data: {"v":"，"}
+
+data: {"v":"以"}
+
+data: {"v":"覆盖"}
+
+data: {"v":"不同"}
+
+data: {"v":"类"}
+
+data: {"v":"别的"}
+
+data: {"v":"新闻"}
+
+data: {"v":"。"}
+
+data: {"p":"response/fragments/-1/elapsed_secs","o":"SET","v":0.936363391}
+
+data: {"p":"response/has_pending_fragment","v":true}
+
+data: {"p":"response","o":"BATCH","v":[{"p":"fragments","o":"APPEND","v":[{"id":3,"type":"TOOL_SEARCH","status":"WIP","content":null,"queries":[{"query":"2026年10月28日 新闻 热点 汇总"},{"query":"2026-10-28 财经 新闻 头条"},{"query":"2026-10-28 科技 新闻 热点"},{"query":"2026-10-28 国际 新闻 头条"}],"results":[],"stage_id":1}]},{"p":"has_pending_fragment","o":"SET","v":false}]}
+
+data: {"p":"response/fragments/-1/results","o":"SET","v":[{"url":"https://tv.cctv.com/2026/10/28/VIDE5GNAJ7Ph7gbrn8qLS61U261028.shtml","title":"《朝闻天下》 20261028 08:00","snippet":"前三季度规模以上工业企业利润较快增长；世界气象组织：地球大气温室气体浓度再创新高；联合国安理会举行伊朗核问题公开会：中方呼吁各方推进美伊止战促谈；联大审议“终止美国对古巴封锁”议题，美古代表激烈争执致会议一度暂停。（《朝闻天下》 20261028 08...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.com/2026/10/28/VIDEPxrBh7DEI35ezjwLT81D261028.shtml","title":"《正点财经》 20261028 09:00","snippet":"推动经济持续向新向优向好：传统制造提质升级，我国造船业三大指标持续领跑全球；聚焦广交会：多元供采对接活动搭建高效交流平台；以色列举行新一届议会选举，两大阵营选情胶着；韩国首尔一棚户区发生火灾，超百人受影响。 （《正点财经》 20261028 09...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},{"url":"https://baijiahao.baidu.com/s?id=1880238610675927243","title":"利好，上海重大发布；中国等26国签署《联合国可转让货物单证公约》；浦发银行信用卡中心被罚320万元丨经参早知道","snippet":"中国等26国签署《联合国可转让货物单证公约》；浦发银行信用卡中心被罚320万元丨经参早知道 ... 2026-10-28 05:00经济参考报官方账号","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/baidu.com","site_name":"百家号","query_indexes":[0],"provider":null},{"url":"https://5g.zgm.cn/content/6ae13f733fa0f","title":"自贡观察带您观天下（2026年10月28日）","snippet":"·1—9月，全国规模以上工业企业实现利润总额60337.4亿元，同比增长15.5% ... ·以色列议会选举投票结束，出口民调显示内塔尼亚胡阵营未获议会多数席位。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/zgm.cn","site_name":"自贡网","query_indexes":[0],"provider":null},{"url":"http://rss2.bjd.com.cn/content/s6ae13950e4b0e42f8f022417.html","title":"10月28日新闻早知道｜昨夜今晨·热点不容错过","snippet":"▶ 习近平致电祝贺卢拉当选连任巴西总统 ... ▶ 习近平向日本前首相福田康夫遗属致唁电 ... ▶ 外交部 ... ▶ 中国足协回应姆巴佩涉华错误言论 ... ▶ 以色列第26届议会选举投票结束","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/bjd.com.cn","site_name":"北京日报","query_indexes":[0],"provider":null},{"url":"https://finance.sina.cn/2026-10-28/detail-iniwtpiz3939447.d.html","title":"三分钟新闻早知道","snippet":"10月28日星期三，农历九月十九 高层动态 1、习近平：27日致电卢拉，祝贺他当选连任巴西联邦共和国总统 ... 热点新闻 1、前三季度西部陆海新通道沿线经通道进出口超7870亿元 今年前三季度 ... 同比增长11.5%，创历史同期新高。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sina.cn","site_name":"新浪财经","query_indexes":[0],"provider":null},{"url":"https://pc.hgdaily.com.cn/p/520143.html#comment","title":"央视新闻|新闻来了〔2026.10.28〕","snippet":"央视新闻|新闻来了〔2026.10.28〕 ○国家广播电视总局发布新规 不得播放开机广告 ○第九届进博会布展启动 保税展品35分钟直达会场","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/hgdaily.com.cn","site_name":"黄冈新闻网","query_indexes":[0],"provider":null},{"url":"http://yzlnb.sjzdaily.com.cn/yzlnbpaper/pc/content/202610/28/content_261232.html","title":"新闻一句话","snippet":"2026年10月28日 ... ■联合国调查委员会发布报告称，以色列在加沙持续实施种族灭绝。 ■近日，乌克兰总统泽连斯基提议再延长国家战时状态90天。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sjzdaily.com.cn","site_name":"石家庄新闻","query_indexes":[0],"provider":null},{"url":"http://www.qhnews.com/newscenter/system/2026/10/28/030627281.shtml","title":"来了！新闻早知道","snippet":"来源：青海日报  | 作者：何娴珺 |  发布时间：2026-10-28 08:29:52  | 阅读次数： 7 |  编辑：江源新闻  要闻  ●习近平致电祝贺卢拉当选连任巴西总统。 习近平向日本前首相福田康夫遗属致唁电。  ●中央纪委国家监委通报2026年1至9月全国纪检监察机关监督检查审查调查情况。  ●外交部发言人表示，中方对英国警方任意、过度执法行为表示强烈不满、严重关切，已向英方提出严","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/qhnews.com","site_name":"青海新闻网","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.cn/2026/10/28/VIDEOg9lBNgEVgbCbCWQRWPN261028.shtml","title":"[朝闻天下]国家统计局 前三季度规上工业企业利润同比增长15.5%","snippet":"[朝闻天下]国家统计局 前三季度规上工业企业利润同比增长15.5% 来源 : 央视网 2026-10-28 07:27 内容简介 88+1 关注 ... 国家统计局：前三季度规上工业企业利润同比增长15.5%。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.cn","site_name":"cctv.cn","query_indexes":[0],"provider":null},{"url":"https://www.sohu.com/a/1093648191_114986?scm=10001.7746_13-119000.0.0-0-0-0-0.0&spm=smpc.channel_354.block3_32_P7Ovbu_1_fd.24.1793143560646qh8sgE5_7746","title":"AI交易发力美股两连阳，半导体光通信爆发西部数据涨近7%，金银闪耀原油跳水","snippet":"AI交易发力美股两连阳，半导体光通信爆发西部数据涨近7%，金银闪耀原油跳水 2026-10-28 07:06 来源: 第一财经 ... 标普500重回7700点...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sohu.com","site_name":"Sohu","query_indexes":[0],"provider":null},{"url":"https://www.sohu.com/a/1093647195_122014422?scm=10001.7746_13-119000.0.0-0-0-0-0.0&spm=smpc.channel_354.block3_32_P7Ovbu_1_fd.12.1793143466927JF9gHmP_7746","title":"早新闻 | 最高增长超38倍，新一批业绩暴增股出炉","snippet":"早新闻 | 最高增长超38倍，新一批业绩暴增股出炉 ... 2026-10-28 07:23 ... 国开新型政策性金融工具3650亿元投放完成","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sohu.com","site_name":"Sohu","query_indexes":[0],"provider":null},{"url":"https://xnews.jin10.com/details/233522","title":"金十数据全球财经早餐","snippet":"金十数据全球财经早餐 | 2026年10月28日 ... 伊朗最高领袖最新发声提及结束战争，出口民调显示以议会两大阵营均未获过半数席位，美俄讨论战后生意，欧佩克+石油产量目标或不变……昨日今晨...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/jin10.com","site_name":"金十数据","query_indexes":[0],"provider":null},{"url":"https://fund.eastmoney.com/a/202610283910688234.html","title":"【早报】深夜发力，美股半导体指数大涨超3%；国际油价，继续回落；PCB产业链上市公司集中披露三季报","snippet":"【早报】深夜发力，美股半导体指数大涨超3%；国际油价，继续回落；PCB产业链上市公司集中披露三季报 2026年10月28日 07:00","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/eastmoney.com","site_name":"eastmoney.com","query_indexes":[0],"provider":null},{"url":"https://k.sina.com.cn/article_1733360754_6750fc7202001kovo.html?from=finance","title":"AI交易发力美股两连阳，半导体光通信爆发西部数据涨近7%，金银闪耀原油跳水","snippet":"AI交易发力美股两连阳，半导体光通信爆发西部数据涨近7%，金银闪耀原油跳水 ... 2026年10月28日 07:04 新浪网 作者","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sina.com.cn","site_name":"sina.com.cn","query_indexes":[0],"provider":null},{"url":"https://fund.eastmoney.com/a/202610283910673314.html","title":"出口民调显示内塔尼亚胡阵营未获议会多数席位；美股存储、光通信板块大涨；31省份前三季度GDP全部公布；红果短剧辟谣年入400亿丨每经早参","snippet":"2026年10月28日 06:15  来源： 每日经济新闻 编辑：东方财富网  1 隔夜市场  当地时间10月27日，美股三大指数收盘集体上涨，纳指涨1.18%，标普500指数涨0.6%，道指涨0.03%。存储、光通信板块继续走强，西部数据涨超6%，闪迪、希捷科技涨超3%，Lumentum涨超5%，Coherent涨超6%，迈威尔科技涨超4%。“科技七巨头”多数上涨，特斯拉涨4.04%，亚马逊涨1","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/eastmoney.com","site_name":"eastmoney.com","query_indexes":[0],"provider":null},{"url":"https://xnews.jin10.com/details/233571","title":"2026年10月28日金十期货早餐：伊朗最高领袖强调落实伊方条件，推动结束战争；消息称欧佩克+拟在周日会议上维持石油产量目标不变。-市场参考-金十数据","snippet":"播放  金十期货APP 2026-10-28 07:16  播放全文  13:41  期货盯盘神器  洞彻市场未见之境  .mp3  00:00 / 13:41  梳理每日行情，把握市场动态，各位听众朋友早上好，今天是2026年10月28日星期三。欢迎收听《期货早高峰》。期货早高峰，百万期货精英的首选！  ## 期货早高峰-音频版  女声普通话版 下载mp3  女声普通话版.mp3  00:00 ","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/jin10.com","site_name":"金十数据","query_indexes":[0],"provider":null},{"url":"https://36kr.com/newsflashes/4044745392542850","title":"英伟达与甲骨文扩大AI基础设施合作，Vera Rubin系统部署规模将达数吉瓦级-36氪","snippet":"英伟达与甲骨文扩大AI基础设施合作，Vera Rubin系统部署规模将达数吉瓦级 2026-10-28 07:27分享至 当地时间10月27日 ... 并正式提供Vera Rubin NVL72系统及Vera CPU云服务。甲骨文还计划推出搭载8颗Rubin","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/36kr.com","site_name":"36氪","query_indexes":[0],"provider":null},{"url":"https://app.dahecube.com/nweb/pc/spiderdetail.html?spidid=881374?recid=5","title":"甲骨文与Cerebras在声明中宣布建立合作伙伴关系","snippet":"甲骨文与Cerebras在声明中宣布建立合作伙伴关系 2026-10-28 00:02:47 ... 英伟达等扩大合作 股价一度涨5% ... 2026-10-28 02:52:48","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/dahecube.com","site_name":"大河财立方","query_indexes":[0],"provider":null},{"url":"http://chinaaet.cn/article/3000181361","title":"英伟达30亿美元入股Meta 押注AI智能体-AET-电子技术应用","snippet":"英伟达30亿美元入股Meta 押注AI智能体 ##### 2026-10-28 ... 当地时间10月26日，英伟达与Meta正式宣布，双方将围绕Muse及Muse系列模型扩大合作，以提升推理与训练性能，回应市场对实用型AI智能体的旺盛需求。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/chinaaet.cn","site_name":"chinaaet.cn","query_indexes":[0],"provider":null},{"url":"https://www.pingwest.com/w/318849","title":"伟达与Meta深化AI合作 拓展智能Agent生态-品玩","snippet":"品玩10月28日讯，据英伟达官方消息，英伟达与Meta近日宣布，双方将深化Muse及Muse模型家族合作，提升推理与训练性能，积极回应市场对实用型AI代理的迫切需求。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/pingwest.com","site_name":"品玩","query_indexes":[0],"provider":null},{"url":"https://www.cls.cn/detail/2517113","title":"财联社10月28日电，英伟达与甲骨文宣布扩大合作，将NVIDIA Vera Rubin架构的部署规模扩展至多吉瓦级别，并将NVIDIA Vera CPU引入甲骨文云基础设施（OCI）。","snippet":"2026年10月28日 00:03:25 财联社10月28日电，英伟达与甲骨文宣布扩大合作，将NVIDIA Vera Rubin架构的部署规模扩展至多吉瓦级别，并将NVIDIA Vera CPU引入甲骨文云基础设施（OCI）。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cls.cn","site_name":"财联社","query_indexes":[0],"provider":null},{"url":"https://www.cls.cn/detail/2517105","title":"财联社10月28日电，甲骨文与Cerebras在声明中宣布建立合作伙伴关系。甲骨文将在其AI数据中心使用Cerebras的设备。","snippet":"26年10月28日 00:01:52 财联社10月28日电，甲骨文与Cerebras在声明中宣布建立合作伙伴关系。甲骨文将在其AI数据中心使用Cerebras的设备。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cls.cn","site_name":"财联社","query_indexes":[0],"provider":null},{"url":"https://www.cww.net.cn/article?id=615350","title":"英伟达与甲骨文扩大AI基础设施合作","snippet":"英伟达与甲骨文扩大AI基础设施合作 ... 通信世界网消息（CWW）当地时间10月27日，英伟达与甲骨文宣布，将把搭载英伟达Vera Rubin NVL72系统的甲骨文云基础设施（OCI）超级集群扩展至数吉瓦级，并正式提供Vera Rubin NVL72系统及Vera CPU云服务。 甲骨文还计划推出搭载8颗Rubin GPU的HGX Rubin NVL8系统...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cww.net.cn","site_name":"通信世界","query_indexes":[0],"provider":null},{"url":"https://www.iheima.com/article-403509.html","title":"英伟达与Meta宣布将扩大在Muse系列模型上的合作，以响应市场对AI智能体的爆发式需求","snippet":"2026-10-28 09:34 英伟达 据悉，英伟达与Meta宣布将扩大在Muse系列模型上的合作，以响应市场对AI智能体的爆发式需求。双方还将探索更多技术维度的协同...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/iheima.com","site_name":"i黑马","query_indexes":[0],"provider":null},{"url":"https://tidenews.com.cn/news.html?id=3598298&from_channel=5d8b4d25cf8dfd0001a4143c&top_id=3598311","title":"开盘早知道｜美股三大指数集体收涨 英伟达30亿美元入股Meta","snippet":"开盘早知道｜美股三大指数集体收涨 英伟达30亿美元入股Meta ... ①美股三大指数集体收涨 ... ①英伟达30亿美元入股Meta ... ②谷歌DeepMind发布世界模型Genie 4 ... ①上海印发新一代智能制造行动方案...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/tidenews.com.cn","site_name":"潮新闻","query_indexes":[0],"provider":null},{"url":"https://xiuxiu.huxiu.com/hxgpt_agent/morning_daily/2026-10-28.html","title":"2026.10.28 每日早报-虎嗅嗅 虎嗅网","snippet":"每日早报10.28星期三  偏好设置  10.28早报  00:00  00:00  ## 昨夜今晨  ### 美股收盘：AI反弹行情延续，存储、光通信板块大涨  美东时间周二，三大指数集体收涨。Anthropic招股书带动的AI反弹行情延续至第二个交易日，芯片股继续领涨；道指则受波音等成分股拖累，表现落后于大盘。 截至收盘，纳指涨1.18%，标普500指数涨0.6%，道指涨0.03%。存储、光通","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/huxiu.com","site_name":"2025.12.31 每日早报-虎嗅嗅 虎嗅网","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.com/2026/10/28/VIDEldAdgMpH3SXUySfMO65L261028.shtml","title":"《新闻直播间》 20261028 09:00","snippet":"中国签署《联合国可转让货物单证公约》；伊朗安全部队击毙多名恐怖分子；胡塞武装称袭击沙特国防部和机场等目标；国家广播电视总局：发布新规，简化看电视操作流程。 （《新闻直播间》 20261028 09...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},{"url":"https://xn--xkrr14bows.cn/20261028/b33f3aca6b0441bf8ec1e9faf38f08c8/c.html","title":"综合消息｜普京与挪芬领导人通话 丹麦首相批削弱欧洲团结","snippet":"新华网 > 新闻 > 正文 ... 综合消息｜普京与挪芬领导人通话 丹麦首相批削弱欧洲团结 ... 俄罗斯总统普京27日与挪威首相斯特勒、芬兰总统斯图布通电话，三方就解决乌克兰危机交换了意见。这是普京一年多来首次与支持乌克兰的欧洲国家领导人通话。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/%E6%96%B0%E5%8D%8E%E7%BD%91.cn","site_name":"新华网.cn","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.cn/2026/10/28/VIDEk3DcLB2LrgjiNUUSb0qD261028.shtml","title":"[朝闻天下]中国签署《联合国可转让货物单证公约》","snippet":"[朝闻天下]中国签署《联合国可转让货物单证公约》 来源 : 央视网 2026-10-28 08:41 内容简介 74+1 关注 - 视频简介 中国签署《联合国可转让货物单证公约》 ... 2026年10月28日 08...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.cn","site_name":"cctv.cn","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.cn/2026/10/28/VIDEX3CuSMMz6kuQDgp4kWBR261028.shtml","title":"《今日环球》 20261028","snippet":"以色列举行新一届议会选举；伊朗最高领袖会见最高国家安全委员会秘书；专家解读：俄乌在阿列什基实行人道主义停火；第九届进博会将于11月5日至10日在上海举办。 （《今日环球》 20261028）","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.cn","site_name":"cctv.cn","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.com/2026/10/28/VIDEhgReLTS2bf69Na8OwBrQ261028.shtml","title":"[新闻直播间]俄罗斯总统与挪威首相和芬兰总统通话 丹麦首相批评挪威芬兰此举削弱欧洲团结","snippet":"[新闻直播间]俄罗斯总统与挪威首相和芬兰总统通话 丹麦首相批评挪威芬兰此举削弱欧洲团结 来源 : 央视网 2026-10-28 10 ... 俄罗斯总统与挪威首相和芬兰总统通话：丹麦首相批评挪威芬兰此举削弱欧洲团结。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},{"url":"https://tv.cctv.cn/2026/10/28/VIDE2EsnZIQZ99vTJFZ9rO3u261028.shtml","title":"《新闻直播间》 20261028 05:00","snippet":"国家统计局：前三季度规模以上工业企业利润增长15.5%；第140届广交会第二期线下展闭展；关注俄乌冲突：俄乌在阿列什基实行人道主义停火；以色列举行议会选举，竞选阵营竞争激烈。 （《新闻直播间》 20261028 05...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.cn","site_name":"cctv.cn","query_indexes":[0],"provider":null},{"url":"https://k.sina.cn/article_1916733321_723f078901901jifi.html?from=news","title":"10月28日全球经贸新闻早知道","snippet":"10月28日全球经贸新闻早知道 加拿大总理卡尼26日表示，加美贸易谈判出现“轻微的升温”，但加拿大的谈判立场没有改变 ... 联合国大会将于27日至28日审议“必须终止美国对古巴的经济、商业和金融封锁”决议草案。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sina.cn","site_name":"手机新浪网","query_indexes":[0],"provider":null},{"url":"https://bernama.com/tv/news.php?id=2626619","title":"Top News Headlines In Indonesia, Laos, Philippines, Singapore, Thailand & Vietnam: Oct 28, 2026","snippet":"28/10/2026 09:11 AM  Victory Monument in Bangkok  INDONESIA  1.BNPB REVIEWS MALAYSIA'S OFFER TO HELP FIGHT FOREST FIRES -- ANTARA  The National Agency for Disaster Countermeasures (BNPB) discussed off","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/bernama.com","site_name":"Bernama","query_indexes":[0],"provider":null}]}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"status","v":"FINISHED"},{"p":"content","v":"搜索到 35 个网页"}]}
+
+data: {"p":"response/has_pending_fragment","o":"SET","v":true}
+
+data: {"p":"response","o":"BATCH","v":[{"p":"fragments","o":"APPEND","v":[{"id":4,"type":"THINK","content":"搜索","elapsed_secs":null,"references":[],"stage_id":2}]},{"p":"has_pending_fragment","o":"SET","v":false}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"结果显示"}
+
+data: {"v":"了许多"}
+
+data: {"v":"相关"}
+
+data: {"v":"条目"}
+
+data: {"v":"。"}
+
+data: {"v":"为了"}
+
+data: {"v":"全面"}
+
+data: {"v":"了解"}
+
+data: {"v":"今天"}
+
+data: {"v":"的热"}
+
+data: {"v":"点"}
+
+data: {"v":"新闻"}
+
+data: {"v":"，"}
+
+data: {"v":"我们需要"}
+
+data: {"v":"同时"}
+
+data: {"v":"打开"}
+
+data: {"v":"这些"}
+
+data: {"v":"结果"}
+
+data: {"v":"。"}
+
+data: {"p":"response/fragments/-1/elapsed_secs","o":"SET","v":1.019461717}
+
+data: {"p":"response/has_pending_fragment","v":true}
+
+data: {"p":"response","o":"BATCH","v":[{"p":"fragments","o":"APPEND","v":[{"id":5,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://tv.cctv.com/2026/10/28/VIDE5GNAJ7Ph7gbrn8qLS61U261028.shtml","title":"《朝闻天下》 20261028 08:00","snippet":"前三季度规模以上工业企业利润较快增长；世界气象组织：地球大气温室气体浓度再创新高；联合国安理会举行伊朗核问题公开会：中方呼吁各方推进美伊止战促谈；联大审议“终止美国对古巴封锁”议题，美古代表激烈争执致会议一度暂停。（《朝闻天下》 20261028 08...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":6,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://tv.cctv.com/2026/10/28/VIDEPxrBh7DEI35ezjwLT81D261028.shtml","title":"《正点财经》 20261028 09:00","snippet":"推动经济持续向新向优向好：传统制造提质升级，我国造船业三大指标持续领跑全球；聚焦广交会：多元供采对接活动搭建高效交流平台；以色列举行新一届议会选举，两大阵营选情胶着；韩国首尔一棚户区发生火灾，超百人受影响。 （《正点财经》 20261028 09...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":7,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://baijiahao.baidu.com/s?id=1880238610675927243","title":"利好，上海重大发布；中国等26国签署《联合国可转让货物单证公约》；浦发银行信用卡中心被罚320万元丨经参早知道","snippet":"中国等26国签署《联合国可转让货物单证公约》；浦发银行信用卡中心被罚320万元丨经参早知道 ... 2026-10-28 05:00经济参考报官方账号","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/baidu.com","site_name":"百家号","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":8,"type":"TOOL_OPEN","status":"WIP","result":{"url":"http://rss2.bjd.com.cn/content/s6ae13950e4b0e42f8f022417.html","title":"10月28日新闻早知道｜昨夜今晨·热点不容错过","snippet":"▶ 习近平致电祝贺卢拉当选连任巴西总统 ... ▶ 习近平向日本前首相福田康夫遗属致唁电 ... ▶ 外交部 ... ▶ 中国足协回应姆巴佩涉华错误言论 ... ▶ 以色列第26届议会选举投票结束","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/bjd.com.cn","site_name":"北京日报","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":9,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://tv.cctv.cn/2026/10/28/VIDEOg9lBNgEVgbCbCWQRWPN261028.shtml","title":"[朝闻天下]国家统计局 前三季度规上工业企业利润同比增长15.5%","snippet":"[朝闻天下]国家统计局 前三季度规上工业企业利润同比增长15.5% 来源 : 央视网 2026-10-28 07:27 内容简介 88+1 关注 ... 国家统计局：前三季度规上工业企业利润同比增长15.5%。","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.cn","site_name":"cctv.cn","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":10,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://www.sohu.com/a/1093648191_114986?scm=10001.7746_13-119000.0.0-0-0-0-0.0&spm=smpc.channel_354.block3_32_P7Ovbu_1_fd.24.1793143560646qh8sgE5_7746","title":"AI交易发力美股两连阳，半导体光通信爆发西部数据涨近7%，金银闪耀原油跳水","snippet":"AI交易发力美股两连阳，半导体光通信爆发西部数据涨近7%，金银闪耀原油跳水 2026-10-28 07:06 来源: 第一财经 ... 标普500重回7700点...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/sohu.com","site_name":"Sohu","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":11,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://36kr.com/newsflashes/4044745392542850","title":"英伟达与甲骨文扩大AI基础设施合作，Vera Rubin系统部署规模将达数吉瓦级-36氪","snippet":"英伟达与甲骨文扩大AI基础设施合作，Vera Rubin系统部署规模将达数吉瓦级 2026-10-28 07:27分享至 当地时间10月27日 ... 并正式提供Vera Rubin NVL72系统及Vera CPU云服务。甲骨文还计划推出搭载8颗Rubin","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/36kr.com","site_name":"36氪","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2},{"id":12,"type":"TOOL_OPEN","status":"WIP","result":{"url":"https://tv.cctv.com/2026/10/28/VIDEldAdgMpH3SXUySfMO65L261028.shtml","title":"《新闻直播间》 20261028 09:00","snippet":"中国签署《联合国可转让货物单证公约》；伊朗安全部队击毙多名恐怖分子；胡塞武装称袭击沙特国防部和机场等目标；国家广播电视总局：发布新规，简化看电视操作流程。 （《新闻直播间》 20261028 09...","cite_index":null,"published_at":1793116800.0,"site_icon":"https://cdn.deepseek.com/site-icons/cctv.com","site_name":"CCTV节目官网","query_indexes":[0],"provider":null},"reference":{"id":3,"type":"TOOL_SEARCH","urls":[]},"stage_id":2}]},{"p":"has_pending_fragment","o":"SET","v":false}]}
+
+data: {"p":"response/fragments/-8/status","o":"SET","v":"FINISHED"}
+
+data: {"p":"response/fragments/-1/status","v":"FINISHED"}
+
+data: {"p":"response/fragments/-6/status","v":"FINISHED"}
+
+data: {"p":"response/fragments/-5/status","v":"FINISHED"}
+
+data: {"p":"response/fragments/-3/status","v":"FINISHED"}
+
+data: {"p":"response/fragments/-7/status","v":"FINISHED"}
+
+data: {"p":"response/fragments/-4/status","v":"FINISHED"}
+
+data: {"p":"response/fragments/-2/status","v":"FINISHED"}
+
+data: {"p":"response/has_pending_fragment","v":true}
+
+data: {"p":"response","o":"BATCH","v":[{"p":"fragments","o":"APPEND","v":[{"id":13,"type":"THINK","content":"这些","elapsed_secs":null,"references":[],"stage_id":3}]},{"p":"has_pending_fragment","o":"SET","v":false}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"结果"}
+
+data: {"v":"涵盖了"}
+
+data: {"v":"经济"}
+
+data: {"v":"、"}
+
+data: {"v":"科技"}
+
+data: {"v":"、"}
+
+data: {"v":"国际"}
+
+data: {"v":"新闻"}
+
+data: {"v":"等多个"}
+
+data: {"v":"方面"}
+
+data: {"v":"。"}
+
+data: {"v":"我需要"}
+
+data: {"v":"组织"}
+
+data: {"v":"一个"}
+
+data: {"v":"全面的"}
+
+data: {"v":"回答"}
+
+data: {"v":"，"}
+
+data: {"v":"按"}
+
+data: {"v":"类别"}
+
+data: {"v":"汇总"}
+
+data: {"v":"今天"}
+
+data: {"v":"的热"}
+
+data: {"v":"点"}
+
+data: {"v":"新闻"}
+
+data: {"v":"。"}
+
+data: {"v":"回答"}
+
+data: {"v":"中"}
+
+data: {"v":"会"}
+
+data: {"v":"引用"}
+
+data: {"v":"多个"}
+
+data: {"v":"来源"}
+
+data: {"v":"。"}
+
+data: {"p":"response/fragments/-1/elapsed_secs","o":"SET","v":0.541490157}
+
+data: {"p":"response/fragments","o":"APPEND","v":[{"id":14,"type":"RESPONSE","content":"今天是","references":[],"stage_id":3}]}
+
+data: {"p":"response/fragments/-1/content","v":"202"}
+
+data: {"v":"6"}
+
+data: {"v":"年"}
+
+data: {"v":"10"}
+
+data: {"v":"月"}
+
+data: {"v":"28"}
+
+data: {"v":"日"}
+
+data: {"v":"，"}
+
+data: {"v":"新闻"}
+
+data: {"v":"热点"}
+
+data: {"v":"主要集中在"}
+
+data: {"v":"**"}
+
+data: {"v":"经济"}
+
+data: {"v":"数据"}
+
+data: {"v":"发布"}
+
+data: {"v":"、"}
+
+data: {"v":"AI"}
+
+data: {"v":"领域的"}
+
+data: {"v":"重大"}
+
+data: {"v":"合作"}
+
+data: {"v":"，"}
+
+data: {"v":"以及"}
+
+data: {"v":"中东"}
+
+data: {"v":"等地"}
+
+data: {"v":"缘"}
+
+data: {"v":"政治"}
+
+data: {"v":"动态"}
+
+data: {"v":"**"}
+
+data: {"v":"上"}
+
+data: {"v":"。"}
+
+data: {"v":"为你"}
+
+data: {"v":"梳理"}
+
+data: {"v":"了几个"}
+
+data: {"v":"关键"}
+
+data: {"v":"领域"}
+
+data: {"v":"的信息"}
+
+data: {"v":"：\n\n"}
+
+data: {"v":"###"}
+
+data: {"v":" 📈"}
+
+data: {"v":" "}
+
+data: {"v":"经济"}
+
+data: {"v":"与"}
+
+data: {"v":"市场"}
+
+data: {"v":"："}
+
+data: {"v":"工业"}
+
+data: {"v":"利润"}
+
+data: {"v":"增长"}
+
+data: {"v":"，"}
+
+data: {"v":"美股"}
+
+data: {"v":"AI"}
+
+data: {"v":"板块"}
+
+data: {"v":"活跃"}
+
+data: {"v":"\n\n"}
+
+data: {"v":"国内"}
+
+data: {"v":"经济"}
+
+data: {"v":"方面"}
+
+data: {"v":"，"}
+
+data: {"v":"最新"}
+
+data: {"v":"数据"}
+
+data: {"v":"表现"}
+
+data: {"v":"稳健"}
+
+data: {"v":"：\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"工业企业"}
+
+data: {"v":"利润"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"国家"}
+
+data: {"v":"统计局"}
+
+data: {"v":"数据显示"}
+
+data: {"v":"，"}
+
+data: {"v":"今年"}
+
+data: {"v":"前三"}
+
+data: {"v":"季度"}
+
+data: {"v":"全国"}
+
+data: {"v":"规模"}
+
+data: {"v":"以上"}
+
+data: {"v":"工业企业"}
+
+data: {"v":"利润"}
+
+data: {"v":"同比增长"}
+
+data: {"v":"**"}
+
+data: {"v":"15"}
+
+data: {"v":"."}
+
+data: {"v":"5"}
+
+data: {"v":"%"}
+
+data: {"v":"**"}
+
+data: {"v":"，"}
+
+data: {"v":"实现"}
+
+data: {"v":"利润"}
+
+data: {"v":"总额"}
+
+data: {"v":"603"}
+
+data: {"v":"37"}
+
+data: {"v":"."}
+
+data: {"v":"4"}
+
+data: {"v":"亿元"}
+
+data: {"v":"，"}
+
+data: {"v":"持续"}
+
+data: {"v":"保持"}
+
+data: {"v":"较快"}
+
+data: {"v":"增长"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:0]"},{"p":"references","o":"SET","v":[{"id":5,"type":"TOOL_OPEN"}]}]}
+
+data: {"v":[{"p":"content","o":"APPEND","v":"[reference:1]"},{"p":"references","v":[{"id":7,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"区域"}
+
+data: {"v":"外贸"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"前三"}
+
+data: {"v":"季度"}
+
+data: {"v":"，"}
+
+data: {"v":"中部"}
+
+data: {"v":"地区"}
+
+data: {"v":"进出口"}
+
+data: {"v":"达"}
+
+data: {"v":"3"}
+
+data: {"v":"."}
+
+data: {"v":"43"}
+
+data: {"v":"万亿元"}
+
+data: {"v":"，"}
+
+data: {"v":"同比增长"}
+
+data: {"v":"**"}
+
+data: {"v":"20"}
+
+data: {"v":"."}
+
+data: {"v":"5"}
+
+data: {"v":"%"}
+
+data: {"v":"**"}
+
+data: {"v":"，"}
+
+data: {"v":"创"}
+
+data: {"v":"历史"}
+
+data: {"v":"同期"}
+
+data: {"v":"新高"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:2]"},{"p":"references","v":[{"id":7,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"政策"}
+
+data: {"v":"与"}
+
+data: {"v":"监管"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"上海"}
+
+data: {"v":"发布了"}
+
+data: {"v":"加快发展"}
+
+data: {"v":"新一代"}
+
+data: {"v":"智能制造"}
+
+data: {"v":"的行动"}
+
+data: {"v":"方案"}
+
+data: {"v":"，"}
+
+data: {"v":"重点"}
+
+data: {"v":"提及"}
+
+data: {"v":"AI"}
+
+data: {"v":" Agent"}
+
+data: {"v":"、"}
+
+data: {"v":"人"}
+
+data: {"v":"形"}
+
+data: {"v":"机器人"}
+
+data: {"v":"等"}
+
+data: {"v":"方向"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:3]"},{"p":"references","v":[{"id":7,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。"}
+
+data: {"v":"同时"}
+
+data: {"v":"，"}
+
+data: {"v":"浦"}
+
+data: {"v":"发"}
+
+data: {"v":"银行"}
+
+data: {"v":"信用卡"}
+
+data: {"v":"中心"}
+
+data: {"v":"因"}
+
+data: {"v":"授"}
+
+data: {"v":"信"}
+
+data: {"v":"管理"}
+
+data: {"v":"等问题"}
+
+data: {"v":"被"}
+
+data: {"v":"罚款"}
+
+data: {"v":"**"}
+
+data: {"v":"320"}
+
+data: {"v":"万元"}
+
+data: {"v":"**"}
+
+data: {"v":"；"}
+
+data: {"v":"证监会"}
+
+data: {"v":"原"}
+
+data: {"v":"党委委员"}
+
+data: {"v":"王"}
+
+data: {"v":"会"}
+
+data: {"v":"民"}
+
+data: {"v":"一审"}
+
+data: {"v":"被判"}
+
+data: {"v":"死"}
+
+data: {"v":"缓"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:4]"},{"p":"references","v":[{"id":7,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n\n"}
+
+data: {"v":"国际"}
+
+data: {"v":"市场上"}
+
+data: {"v":"，"}
+
+data: {"v":"AI"}
+
+data: {"v":"热潮"}
+
+data: {"v":"继续"}
+
+data: {"v":"推动"}
+
+data: {"v":"美股"}
+
+data: {"v":"科技"}
+
+data: {"v":"股"}
+
+data: {"v":"上行"}
+
+data: {"v":"：\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"美股"}
+
+data: {"v":"表现"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"在"}
+
+data: {"v":"AI"}
+
+data: {"v":"交易的"}
+
+data: {"v":"推动"}
+
+data: {"v":"下"}
+
+data: {"v":"，"}
+
+data: {"v":"美股"}
+
+data: {"v":"三大"}
+
+data: {"v":"指数"}
+
+data: {"v":"集体"}
+
+data: {"v":"收"}
+
+data: {"v":"涨"}
+
+data: {"v":"，"}
+
+data: {"v":"实现"}
+
+data: {"v":"“"}
+
+data: {"v":"两"}
+
+data: {"v":"连"}
+
+data: {"v":"阳"}
+
+data: {"v":"”。"}
+
+data: {"v":"标"}
+
+data: {"v":"普"}
+
+data: {"v":"500"}
+
+data: {"v":"指数"}
+
+data: {"v":"重回"}
+
+data: {"v":"**"}
+
+data: {"v":"770"}
+
+data: {"v":"0"}
+
+data: {"v":"点"}
+
+data: {"v":"**"}
+
+data: {"v":"上方"}
+
+data: {"v":"，"}
+
+data: {"v":"以"}
+
+data: {"v":"科技"}
+
+data: {"v":"股"}
+
+data: {"v":"为主的"}
+
+data: {"v":"纳斯"}
+
+data: {"v":"达"}
+
+data: {"v":"克"}
+
+data: {"v":"指数"}
+
+data: {"v":"上涨"}
+
+data: {"v":"**"}
+
+data: {"v":"1"}
+
+data: {"v":"."}
+
+data: {"v":"18"}
+
+data: {"v":"%"}
+
+data: {"v":"**"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:5]"},{"p":"references","v":[{"id":10,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"半导体"}
+
+data: {"v":"与"}
+
+data: {"v":"AI"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"费"}
+
+data: {"v":"城"}
+
+data: {"v":"半导体"}
+
+data: {"v":"指数"}
+
+data: {"v":"大涨"}
+
+data: {"v":"近"}
+
+data: {"v":"**"}
+
+data: {"v":"4"}
+
+data: {"v":"%"}
+
+data: {"v":"**"}
+
+data: {"v":"。"}
+
+data: {"v":"英"}
+
+data: {"v":"伟"}
+
+data: {"v":"达"}
+
+data: {"v":"股价"}
+
+data: {"v":"因"}
+
+data: {"v":"与"}
+
+data: {"v":"Meta"}
+
+data: {"v":"、"}
+
+data: {"v":"甲骨"}
+
+data: {"v":"文"}
+
+data: {"v":"扩大"}
+
+data: {"v":"合作"}
+
+data: {"v":"而"}
+
+data: {"v":"受到"}
+
+data: {"v":"关注"}
+
+data: {"v":"，"}
+
+data: {"v":"西部"}
+
+data: {"v":"数据"}
+
+data: {"v":"（"}
+
+data: {"v":"存储"}
+
+data: {"v":"芯片"}
+
+data: {"v":"）"}
+
+data: {"v":"涨"}
+
+data: {"v":"近"}
+
+data: {"v":"**"}
+
+data: {"v":"7"}
+
+data: {"v":"%"}
+
+data: {"v":"**"}
+
+data: {"v":"，"}
+
+data: {"v":"光"}
+
+data: {"v":"通信"}
+
+data: {"v":"板块"}
+
+data: {"v":"也"}
+
+data: {"v":"表现"}
+
+data: {"v":"活跃"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:6]"},{"p":"references","v":[{"id":10,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n\n"}
+
+data: {"v":"###"}
+
+data: {"v":" 🤖"}
+
+data: {"v":" "}
+
+data: {"v":"科技"}
+
+data: {"v":"焦点"}
+
+data: {"v":"："}
+
+data: {"v":"英"}
+
+data: {"v":"伟"}
+
+data: {"v":"达"}
+
+data: {"v":"密集"}
+
+data: {"v":"扩大"}
+
+data: {"v":"AI"}
+
+data: {"v":"合作"}
+
+data: {"v":"\n\n"}
+
+data: {"v":"今天"}
+
+data: {"v":"科技"}
+
+data: {"v":"领域的"}
+
+data: {"v":"新闻"}
+
+data: {"v":"几乎"}
+
+data: {"v":"被"}
+
+data: {"v":"英"}
+
+data: {"v":"伟"}
+
+data: {"v":"达"}
+
+data: {"v":"（"}
+
+data: {"v":"N"}
+
+data: {"v":"VIDIA"}
+
+data: {"v":"）"}
+
+data: {"v":"的相关"}
+
+data: {"v":"合作"}
+
+data: {"v":"占据"}
+
+data: {"v":"，"}
+
+data: {"v":"显示出"}
+
+data: {"v":"AI"}
+
+data: {"v":"基础设施"}
+
+data: {"v":"建设的"}
+
+data: {"v":"加速"}
+
+data: {"v":"：\n\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"与"}
+
+data: {"v":"甲骨"}
+
+data: {"v":"文"}
+
+data: {"v":"（"}
+
+data: {"v":"Oracle"}
+
+data: {"v":"）"}
+
+data: {"v":"扩大"}
+
+data: {"v":"合作"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"双方"}
+
+data: {"v":"宣布"}
+
+data: {"v":"将"}
+
+data: {"v":"把"}
+
+data: {"v":"搭载"}
+
+data: {"v":"英"}
+
+data: {"v":"伟"}
+
+data: {"v":"达"}
+
+data: {"v":"**"}
+
+data: {"v":"V"}
+
+data: {"v":"era"}
+
+data: {"v":" Rubin"}
+
+data: {"v":" N"}
+
+data: {"v":"VL"}
+
+data: {"v":"72"}
+
+data: {"v":"**"}
+
+data: {"v":"系统的"}
+
+data: {"v":"甲骨"}
+
+data: {"v":"文"}
+
+data: {"v":"云"}
+
+data: {"v":"基础设施"}
+
+data: {"v":"（"}
+
+data: {"v":"OCI"}
+
+data: {"v":"）"}
+
+data: {"v":"超级"}
+
+data: {"v":"集群"}
+
+data: {"v":"扩展"}
+
+data: {"v":"至"}
+
+data: {"v":"**"}
+
+data: {"v":"数"}
+
+data: {"v":"吉"}
+
+data: {"v":"瓦"}
+
+data: {"v":"级"}
+
+data: {"v":"**"}
+
+data: {"v":"规模"}
+
+data: {"v":"，"}
+
+data: {"v":"并"}
+
+data: {"v":"正式"}
+
+data: {"v":"提供"}
+
+data: {"v":"相关"}
+
+data: {"v":"云"}
+
+data: {"v":"服务"}
+
+data: {"v":"，"}
+
+data: {"v":"以"}
+
+data: {"v":"支持"}
+
+data: {"v":"前沿"}
+
+data: {"v":"模型"}
+
+data: {"v":"训练"}
+
+data: {"v":"和"}
+
+data: {"v":"推理"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:7]"},{"p":"references","v":[{"id":11,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"与"}
+
+data: {"v":"Meta"}
+
+data: {"v":"深化"}
+
+data: {"v":"合作"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"英"}
+
+data: {"v":"伟"}
+
+data: {"v":"达"}
+
+data: {"v":"与"}
+
+data: {"v":"Meta"}
+
+data: {"v":"宣布"}
+
+data: {"v":"扩大"}
+
+data: {"v":"在"}
+
+data: {"v":"**"}
+
+data: {"v":"M"}
+
+data: {"v":"use"}
+
+data: {"v":"系列"}
+
+data: {"v":"模型"}
+
+data: {"v":"**"}
+
+data: {"v":"上的"}
+
+data: {"v":"合作"}
+
+data: {"v":"，"}
+
+data: {"v":"以"}
+
+data: {"v":"响应"}
+
+data: {"v":"市场"}
+
+data: {"v":"对"}
+
+data: {"v":"实用"}
+
+data: {"v":"型"}
+
+data: {"v":"AI"}
+
+data: {"v":"智能"}
+
+data: {"v":"体"}
+
+data: {"v":"（"}
+
+data: {"v":"AI"}
+
+data: {"v":" Agent"}
+
+data: {"v":"）"}
+
+data: {"v":"的"}
+
+data: {"v":"爆发"}
+
+data: {"v":"式"}
+
+data: {"v":"需求"}
+
+data: {"v":"。"}
+
+data: {"v":"此外"}
+
+data: {"v":"，"}
+
+data: {"v":"有"}
+
+data: {"v":"消息"}
+
+data: {"v":"称"}
+
+data: {"v":"英"}
+
+data: {"v":"伟"}
+
+data: {"v":"达"}
+
+data: {"v":"计划"}
+
+data: {"v":"出资"}
+
+data: {"v":"**"}
+
+data: {"v":"30"}
+
+data: {"v":"亿美元"}
+
+data: {"v":"**"}
+
+data: {"v":"认购"}
+
+data: {"v":"Meta"}
+
+data: {"v":"新股"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:8]"},{"p":"references","v":[{"id":3,"type":"TOOL_SEARCH","urls":["http://chinaaet.cn/article/3000181361","https://www.pingwest.com/w/318849"]}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"与"}
+
+data: {"v":"C"}
+
+data: {"v":"ere"}
+
+data: {"v":"bras"}
+
+data: {"v":"建立"}
+
+data: {"v":"伙伴"}
+
+data: {"v":"关系"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"甲骨"}
+
+data: {"v":"文"}
+
+data: {"v":"同时"}
+
+data: {"v":"宣布"}
+
+data: {"v":"与"}
+
+data: {"v":"AI"}
+
+data: {"v":"芯片"}
+
+data: {"v":"公司"}
+
+data: {"v":"C"}
+
+data: {"v":"ere"}
+
+data: {"v":"bras"}
+
+data: {"v":"合作"}
+
+data: {"v":"，"}
+
+data: {"v":"将在"}
+
+data: {"v":"其"}
+
+data: {"v":"AI"}
+
+data: {"v":"数据中心"}
+
+data: {"v":"使用"}
+
+data: {"v":"C"}
+
+data: {"v":"ere"}
+
+data: {"v":"bras"}
+
+data: {"v":"的设备"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:9]"},{"p":"references","v":[{"id":3,"type":"TOOL_SEARCH","urls":["https://app.dahecube.com/nweb/pc/spiderdetail.html?spidid=881374?recid=5"]}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n\n"}
+
+data: {"v":"###"}
+
+data: {"v":" 🌍"}
+
+data: {"v":" "}
+
+data: {"v":"国际"}
+
+data: {"v":"动态"}
+
+data: {"v":"："}
+
+data: {"v":"中东"}
+
+data: {"v":"选举"}
+
+data: {"v":"与"}
+
+data: {"v":"地"}
+
+data: {"v":"缘"}
+
+data: {"v":"政治"}
+
+data: {"v":"\n\n"}
+
+data: {"v":"国际"}
+
+data: {"v":"方面"}
+
+data: {"v":"，"}
+
+data: {"v":"中东"}
+
+data: {"v":"局势"}
+
+data: {"v":"和"}
+
+data: {"v":"俄"}
+
+data: {"v":"乌"}
+
+data: {"v":"冲突"}
+
+data: {"v":"的相关"}
+
+data: {"v":"进展"}
+
+data: {"v":"是"}
+
+data: {"v":"主要"}
+
+data: {"v":"看点"}
+
+data: {"v":"：\n\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"以色列"}
+
+data: {"v":"议会"}
+
+data: {"v":"选举"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"以色列"}
+
+data: {"v":"举行"}
+
+data: {"v":"新"}
+
+data: {"v":"一届"}
+
+data: {"v":"议会"}
+
+data: {"v":"选举"}
+
+data: {"v":"，"}
+
+data: {"v":"出口"}
+
+data: {"v":"民"}
+
+data: {"v":"调"}
+
+data: {"v":"显示"}
+
+data: {"v":"，"}
+
+data: {"v":"现任"}
+
+data: {"v":"总理"}
+
+data: {"v":"内"}
+
+data: {"v":"塔"}
+
+data: {"v":"尼亚"}
+
+data: {"v":"胡"}
+
+data: {"v":"领导的"}
+
+data: {"v":"阵营"}
+
+data: {"v":"**"}
+
+data: {"v":"未"}
+
+data: {"v":"获得"}
+
+data: {"v":"议会"}
+
+data: {"v":"多数"}
+
+data: {"v":"席位"}
+
+data: {"v":"**"}
+
+data: {"v":"，"}
+
+data: {"v":"选"}
+
+data: {"v":"情"}
+
+data: {"v":"胶"}
+
+data: {"v":"着"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:10]"},{"p":"references","v":[{"id":3,"type":"TOOL_SEARCH","urls":["https://5g.zgm.cn/content/6ae13f733fa0f"]}]}]}
+
+data: {"v":[{"p":"content","o":"APPEND","v":"[reference:11]"},{"p":"references","v":[{"id":6,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"伊朗"}
+
+data: {"v":"核"}
+
+data: {"v":"问题"}
+
+data: {"v":"与"}
+
+data: {"v":"美"}
+
+data: {"v":"伊"}
+
+data: {"v":"关系"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"联合国"}
+
+data: {"v":"安"}
+
+data: {"v":"理会"}
+
+data: {"v":"举行"}
+
+data: {"v":"伊朗"}
+
+data: {"v":"核"}
+
+data: {"v":"问题"}
+
+data: {"v":"公开"}
+
+data: {"v":"会"}
+
+data: {"v":"，"}
+
+data: {"v":"中方"}
+
+data: {"v":"呼吁"}
+
+data: {"v":"各方"}
+
+data: {"v":"推进"}
+
+data: {"v":"美"}
+
+data: {"v":"伊"}
+
+data: {"v":"止"}
+
+data: {"v":"战"}
+
+data: {"v":"促"}
+
+data: {"v":"谈"}
+
+data: {"v":"。"}
+
+data: {"v":"伊朗"}
+
+data: {"v":"最高"}
+
+data: {"v":"领袖"}
+
+data: {"v":"表示"}
+
+data: {"v":"，"}
+
+data: {"v":"推动"}
+
+data: {"v":"结束"}
+
+data: {"v":"当前"}
+
+data: {"v":"“"}
+
+data: {"v":"非"}
+
+data: {"v":"战"}
+
+data: {"v":"非"}
+
+data: {"v":"和"}
+
+data: {"v":"”"}
+
+data: {"v":"状态"}
+
+data: {"v":"是"}
+
+data: {"v":"抵抗"}
+
+data: {"v":"的"}
+
+data: {"v":"成果"}
+
+data: {"v":"之一"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:12]"},{"p":"references","v":[{"id":5,"type":"TOOL_OPEN"}]}]}
+
+data: {"v":[{"p":"content","o":"APPEND","v":"[reference:13]"},{"p":"references","v":[{"id":10,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"俄"}
+
+data: {"v":"乌"}
+
+data: {"v":"局势"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"俄罗斯"}
+
+data: {"v":"总统"}
+
+data: {"v":"普京"}
+
+data: {"v":"与"}
+
+data: {"v":"挪威"}
+
+data: {"v":"、"}
+
+data: {"v":"芬兰"}
+
+data: {"v":"领导人"}
+
+data: {"v":"通话"}
+
+data: {"v":"，"}
+
+data: {"v":"这是"}
+
+data: {"v":"普京"}
+
+data: {"v":"一年多"}
+
+data: {"v":"来"}
+
+data: {"v":"首次"}
+
+data: {"v":"与"}
+
+data: {"v":"支持"}
+
+data: {"v":"乌克兰"}
+
+data: {"v":"的"}
+
+data: {"v":"欧洲"}
+
+data: {"v":"国家"}
+
+data: {"v":"领导人"}
+
+data: {"v":"通话"}
+
+data: {"v":"，"}
+
+data: {"v":"但"}
+
+data: {"v":"此举"}
+
+data: {"v":"遭到"}
+
+data: {"v":"丹麦"}
+
+data: {"v":"首相"}
+
+data: {"v":"批评"}
+
+data: {"v":"，"}
+
+data: {"v":"认为"}
+
+data: {"v":"其"}
+
+data: {"v":"削弱"}
+
+data: {"v":"了"}
+
+data: {"v":"欧洲"}
+
+data: {"v":"团结"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:14]"},{"p":"references","v":[{"id":3,"type":"TOOL_SEARCH","urls":["https://xn--xkrr14bows.cn/20261028/b33f3aca6b0441bf8ec1e9faf38f08c8/c.html"]}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"其他"}
+
+data: {"v":"事件"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"联合国"}
+
+data: {"v":"大会"}
+
+data: {"v":"审议"}
+
+data: {"v":"“"}
+
+data: {"v":"终止"}
+
+data: {"v":"美国"}
+
+data: {"v":"对"}
+
+data: {"v":"古巴"}
+
+data: {"v":"封锁"}
+
+data: {"v":"”"}
+
+data: {"v":"议题"}
+
+data: {"v":"，"}
+
+data: {"v":"美"}
+
+data: {"v":"古"}
+
+data: {"v":"代表"}
+
+data: {"v":"发生"}
+
+data: {"v":"激烈"}
+
+data: {"v":"争执"}
+
+data: {"v":"，"}
+
+data: {"v":"导致"}
+
+data: {"v":"会议"}
+
+data: {"v":"一度"}
+
+data: {"v":"暂停"}
+
+data: {"v":"。"}
+
+data: {"v":"此外"}
+
+data: {"v":"，"}
+
+data: {"v":"韩国"}
+
+data: {"v":"首"}
+
+data: {"v":"尔"}
+
+data: {"v":"一"}
+
+data: {"v":"棚"}
+
+data: {"v":"户"}
+
+data: {"v":"区"}
+
+data: {"v":"发生"}
+
+data: {"v":"火灾"}
+
+data: {"v":"，"}
+
+data: {"v":"超"}
+
+data: {"v":"百"}
+
+data: {"v":"人"}
+
+data: {"v":"受影响"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:15]"},{"p":"references","v":[{"id":3,"type":"TOOL_SEARCH","urls":["https://tv.cctv.com/2026/10/28/VIDE5GNAJ7Ph7gbrn8qLS61U261028.shtml","https://tv.cctv.com/2026/10/28/VIDEPxrBh7DEI35ezjwLT81D261028.shtml"]}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n\n"}
+
+data: {"v":"###"}
+
+data: {"v":" 🏠"}
+
+data: {"v":" "}
+
+data: {"v":"国内"}
+
+data: {"v":"民生"}
+
+data: {"v":"与"}
+
+data: {"v":"体育"}
+
+data: {"v":"\n\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"民生"}
+
+data: {"v":"新"}
+
+data: {"v":"规"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"国家"}
+
+data: {"v":"广播电视"}
+
+data: {"v":"总局"}
+
+data: {"v":"发布"}
+
+data: {"v":"新"}
+
+data: {"v":"规"}
+
+data: {"v":"，"}
+
+data: {"v":"要求"}
+
+data: {"v":"**"}
+
+data: {"v":"不得"}
+
+data: {"v":"播放"}
+
+data: {"v":"开机"}
+
+data: {"v":"广告"}
+
+data: {"v":"**"}
+
+data: {"v":"，"}
+
+data: {"v":"并"}
+
+data: {"v":"简化"}
+
+data: {"v":"看电视"}
+
+data: {"v":"的操作"}
+
+data: {"v":"流程"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:16]"},{"p":"references","v":[{"id":3,"type":"TOOL_SEARCH","urls":["https://pc.hgdaily.com.cn/p/520143.html#comment"]}]}]}
+
+data: {"v":[{"p":"content","o":"APPEND","v":"[reference:17]"},{"p":"references","v":[{"id":12,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n"}
+
+data: {"v":"-"}
+
+data: {"v":" **"}
+
+data: {"v":"体育"}
+
+data: {"v":"相关"}
+
+data: {"v":"**"}
+
+data: {"v":"："}
+
+data: {"v":"中国"}
+
+data: {"v":"足"}
+
+data: {"v":"协"}
+
+data: {"v":"就"}
+
+data: {"v":"姆"}
+
+data: {"v":"巴"}
+
+data: {"v":"佩"}
+
+data: {"v":"涉"}
+
+data: {"v":"华"}
+
+data: {"v":"错误"}
+
+data: {"v":"言论"}
+
+data: {"v":"作出"}
+
+data: {"v":"回应"}
+
+data: {"v":"，"}
+
+data: {"v":"表示"}
+
+data: {"v":"**"}
+
+data: {"v":"坚决"}
+
+data: {"v":"反对"}
+
+data: {"v":"任何"}
+
+data: {"v":"伤害"}
+
+data: {"v":"中国人民"}
+
+data: {"v":"感情的"}
+
+data: {"v":"言论"}
+
+data: {"v":"**"}
+
+data: {"p":"response/fragments/-1","o":"BATCH","v":[{"p":"content","o":"APPEND","v":"[reference:18]"},{"p":"references","v":[{"id":8,"type":"TOOL_OPEN"}]}]}
+
+data: {"p":"response/fragments/-1/content","o":"APPEND","v":"。\n\n"}
+
+data: {"v":"以上"}
+
+data: {"v":"是"}
+
+data: {"v":"今天"}
+
+data: {"v":"部分"}
+
+data: {"v":"热点"}
+
+data: {"v":"新闻"}
+
+data: {"v":"的"}
+
+data: {"v":"梳理"}
+
+data: {"v":"，"}
+
+data: {"v":"如果你"}
+
+data: {"v":"对"}
+
+data: {"v":"其中"}
+
+data: {"v":"某个"}
+
+data: {"v":"事件"}
+
+data: {"v":"想"}
+
+data: {"v":"了解更多"}
+
+data: {"v":"，"}
+
+data: {"v":"可以"}
+
+data: {"v":"再"}
+
+data: {"v":"问我"}
+
+data: {"v":"。"}
+
+data: {"p":"response/fragments","v":[{"id":15,"type":"TIP","content":"本回答由 AI 生成，内容仅供参考，请仔细甄别","style":"WARNING","hide_on_wip":true}]}
+
+data: {"p":"response","o":"BATCH","v":[{"p":"accumulated_token_usage","v":914},{"p":"quasi_status","v":"FINISHED"}]}
+
+data: {"p":"response/status","o":"SET","v":"FINISHED"}
+
+event: update_session
+data: {"updated_at":1793156021.3209338}
+
+event: close
+data: {"click_behavior":"none","auto_resume":false}
+

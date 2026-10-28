@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Text.Json;
+using System.Threading.RateLimiting;
 using Wasmtime;
 using Module = Wasmtime.Module;
 
@@ -43,10 +44,33 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
     private readonly CreatePowChallengePayload _createPowChallengePayload = new(TargetPath: "/api/v0/chat/completion");
 
     private readonly DsWebClientOptions _extraHeaderOptions;
+    private readonly RateLimiter _rateLimiter;
 
-    public DsWebChatClient(string authToken, string dsSessionId, DsWebClientOptions? extraHeaderOptions = null)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DsWebChatClient"/> class.
+    /// </summary>
+    /// <param name="authToken"></param>
+    /// <param name="dsSessionId"></param>
+    /// <param name="extraHeaderOptions"></param>
+    /// <param name="rateLimiter">RateLimiter to limit Completion Requests' frequency
+    /// will create a default TokenBucketRateLimiter with TokenLimit 20, TokenPerPeriod 10,AutoReplenishment true(must), ReplenishmentPeriod 1s, QueueLimit 0</param>
+    /// <exception cref="DataException"></exception>
+    /// <exception cref="Exception"></exception>
+    public DsWebChatClient(string authToken, string dsSessionId, DsWebClientOptions? extraHeaderOptions = null,
+        RateLimiter? rateLimiter = null)
     {
         _extraHeaderOptions = extraHeaderOptions ?? new DsWebClientOptions();
+        _rateLimiter = rateLimiter ?? new TokenBucketRateLimiter(
+            new TokenBucketRateLimiterOptions
+            {
+                TokenLimit = 20,
+                TokensPerPeriod = 10,
+                ReplenishmentPeriod = TimeSpan.FromSeconds(1),
+                QueueLimit = 0,
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                AutoReplenishment = true
+            });
+
         _authToken = authToken;
         _dsSessionId = dsSessionId;
         _httpClient.BaseAddress = new Uri(BaseUri);
@@ -231,6 +255,9 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         //         }
         //     }
         // }
+        using var lease = await _rateLimiter.AcquireAsync(1, cancellationToken);
+        if (!lease.IsAcquired)
+            throw new Exception("Rate limit exceeded for CreateSessionAsync");
         var request = CreateDsRequest();
         request.RequestUri = new Uri(CreateSessionUri, UriKind.Relative);
         request.Content = JsonContent.Create(new { }, options: _sharedJsonSerializerOptions);
@@ -257,7 +284,8 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
     /// <param name="prompt"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<DsCompletionResponse> RequestCompletionAsync(string prompt, CancellationToken cancellationToken = default)
+    public async Task<DsCompletionResponse> RequestCompletionAsync(string prompt,
+        CancellationToken cancellationToken = default)
     {
         var payload = new CompletionRequest
         {
@@ -320,9 +348,9 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
                         var fragment = doc.RootElement.GetProperty("v").GetProperty("response")
                             .GetProperty("fragments")
                             .EnumerateArray().ElementAt(0);
-                        SwitchBuilder(fragment);
+                        ParseFragment(fragment);
                     }
-                    else
+                    else if (line[11] == '"')
                     {
                         try
                         {
@@ -352,7 +380,7 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
                                 currentBuilder.Append(doc.RootElement.GetProperty("v").GetString());
                                 break;
                             case "response/fragments":
-                                SwitchBuilder(doc.RootElement.GetProperty("v").EnumerateArray().ElementAt(0));
+                                ParseFragment(doc.RootElement.GetProperty("v").EnumerateArray().ElementAt(0));
                                 break;
                             default:
                                 break;
@@ -372,7 +400,7 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
             Response = responseBuilder.ToString()
         };
 
-        void SwitchBuilder(JsonElement fragment)
+        void ParseFragment(JsonElement fragment)
         {
             try
             {
@@ -382,11 +410,14 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
                     case "THINK":
                         currentBuilder = thinkingBuilder; break;
                     case "RESPONSE": currentBuilder = responseBuilder; break;
+                    case "TIP": return;
                     default:
-                        throw new DataException(
-                            $"Unknown fragment type: {fragment.GetProperty("type").GetString()}");
+                        return; // Ignore unknown fragment types, since the server may add new types in the future
                 }
 
+                if (currentBuilder is null)
+                    throw new DataException(
+                        "Received SSE fragment before the first fragment type was determined");
                 currentBuilder.Append(fragment.GetProperty("content").GetString());
             }
             catch (Exception e)
