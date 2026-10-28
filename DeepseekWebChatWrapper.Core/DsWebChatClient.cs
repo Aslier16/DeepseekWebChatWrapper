@@ -50,6 +50,9 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         _authToken = authToken;
         _dsSessionId = dsSessionId;
         _httpClient.BaseAddress = new Uri(BaseUri);
+        // Timeouts are enforced per request instead: a single streamed answer can take minutes, which the
+        // default 100 second HttpClient.Timeout would cut off.
+        _httpClient.Timeout = Timeout.InfiniteTimeSpan;
 
         var assembly = Assembly.Load("DeepseekWebChatWrapper.Core");
         var wasmStream =
@@ -88,8 +91,6 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         request.Headers.Add("Authorization",
             _authToken.StartsWith("Bearer ") ? _authToken : $"Bearer {_authToken}");
         request.Headers.Add("Cookie", $"ds_session_id={_dsSessionId}");
-
-        request.Headers.Add("Cookie", $"ds_session_id={_dsSessionId}");
         request.Headers.Add("User-Agent", _extraHeaderOptions.UserAgent);
         request.Headers.Add("x-client-bundle-id", _extraHeaderOptions.XClientBundleId);
         request.Headers.Add("x-client-locale", _extraHeaderOptions.XClientLocale);
@@ -100,6 +101,18 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
             request.Headers.Add("x-device-id", _extraHeaderOptions.XDeviceId);
 
         return request;
+    }
+
+    /// <summary>
+    /// Sends a request that is expected to be small and fully buffered, bounded by
+    /// <see cref="DsWebClientOptions.RequestTimeout"/>.
+    /// </summary>
+    private async Task<HttpResponseMessage> SendBufferedAsync(HttpRequestMessage request,
+        CancellationToken cancellationToken)
+    {
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCts.CancelAfter(_extraHeaderOptions.RequestTimeout);
+        return await _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead, timeoutCts.Token);
     }
 
     public async Task<ChallengeResponse> CreatePowChallengeAsync(CancellationToken cancellationToken = default)
@@ -129,8 +142,8 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         request.RequestUri = new Uri(CreatePowChallengeUri, UriKind.Relative);
         request.Content = JsonContent.Create(_createPowChallengePayload, options: _sharedJsonSerializerOptions);
 
-        var response = await _httpClient.SendAsync(request, cancellationToken);
-        var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+        using var response = await SendBufferedAsync(request, cancellationToken);
+        await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
         var doc = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
         try
         {
@@ -222,8 +235,8 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         request.RequestUri = new Uri(CreateSessionUri, UriKind.Relative);
         request.Content = JsonContent.Create(new { }, options: _sharedJsonSerializerOptions);
 
-        var response = await _httpClient.SendAsync(request, cancellationToken);
-        var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+        using var response = await SendBufferedAsync(request, cancellationToken);
+        await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
         var doc = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
         try
         {
@@ -269,11 +282,18 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         request.RequestUri = new Uri(CompletionPath, UriKind.Relative);
         request.Headers.Add(PowHeaderName, powResponseBase64);
         request.Content = JsonContent.Create(payload, options: _sharedJsonSerializerOptions);
-        var response = await _httpClient.SendAsync(request, cancellationToken);
+
+        // Read the SSE body as it arrives instead of buffering the whole answer, so the request returns
+        // as soon as headers arrive and is not limited by the (former) fixed HttpClient timeout.
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCts.CancelAfter(_extraHeaderOptions.CompletionTimeout);
+
+        using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead,
+            timeoutCts.Token);
 
         // Consume Sse response
-        var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
-        return await ParseSseAsync(stream, cancellationToken);
+        await using var stream = await response.Content.ReadAsStreamAsync(timeoutCts.Token);
+        return await ParseSseAsync(stream, timeoutCts.Token);
     }
 
     public static async Task<DsCompletionResponse> ParseSseAsync(Stream stream, CancellationToken cancellationToken)
@@ -453,6 +473,17 @@ public record DsWebClientOptions
     public long XClientTimeZoneOffset { get; init; } = 28800;
     public string XClientVersion { get; init; } = "2.7.0";
     public string? XDeviceId { get; init; } = null;
+
+    /// <summary>
+    /// Timeout for the short, buffered calls (PoW challenge request, session creation).
+    /// </summary>
+    public TimeSpan RequestTimeout { get; init; } = TimeSpan.FromSeconds(60);
+
+    /// <summary>
+    /// Timeout for the streamed completion request. Defaults to no timeout, since thinking + web search
+    /// answers can run for several minutes; set a value if you need an upper bound.
+    /// </summary>
+    public TimeSpan CompletionTimeout { get; init; } = Timeout.InfiniteTimeSpan;
 }
 
 public record DsCompletionResponse

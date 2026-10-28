@@ -4,6 +4,22 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>Aslier.DeepseekWebChatWrapper</PackageId>
+        <Version>0.0.1</Version>
+        <Title>DeepseekWebChatWrapper</Title>
+        <Authors>Aslier</Authors>
+        <Description>A .NET implementation for calling DeepSeek's web chat</Description>
+        <Copyright>Copyright © 2026 Aslier</Copyright>
+        <PackageProjectUrl>https://github.com/Aslier16/DeepseekWebChatWrapper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Aslier16/DeepseekWebChatWrapper</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>deepseek;webchat</PackageTags>
+        <PackageReleaseNotes>first release</PackageReleaseNotes>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,11 +27,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+      <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Remove="Assets\ds_webchat_wasm.wasm" />
-      <EmbeddedResource Include="Assets\ds_webchat_wasm.wasm">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <Generator>ResXFileCodeGenerator</Generator>
-      </EmbeddedResource>
+      <EmbeddedResource Include="Assets\ds_webchat_wasm.wasm" />
     </ItemGroup>
 
 </Project>
