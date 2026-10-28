@@ -4,7 +4,7 @@ English | [简体中文](README.zh-CN.md)
 
 A .NET implementation for calling DeepSeek's web chat (`chat.deepseek.com`)
 
-> **Status: pre-release, `0.0.1`.** The API surface is not stable and the endpoints/headers it targets
+> **Status: developing, `0.0.1`.** The API surface is not stable and the endpoints/headers it targets
 > are the ones used by the web app, so they can change without notice.
 
 ## What it does
