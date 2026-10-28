@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Aslier.DeepseekWebChatWrapper</PackageId>
-        <Version>0.0.1</Version>
+        <Version>0.0.2</Version>
         <Title>DeepseekWebChatWrapper</Title>
         <Authors>Aslier</Authors>
         <Description>A .NET implementation for calling DeepSeek's web chat</Description>
