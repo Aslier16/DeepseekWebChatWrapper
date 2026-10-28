@@ -221,6 +221,8 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         int status = _memory.ReadInt32(returnPtr);
         double answer = _memory.ReadDouble(returnPtr + 8);
         _addToStack.Invoke(16);
+        _free(challengePtr, challengeBytes.Length, 1);
+        _free(prefixPtr, prefixBytes.Length, 1);
 
         if (status == 0)
             throw new Exception("No solution found for the challenge");
