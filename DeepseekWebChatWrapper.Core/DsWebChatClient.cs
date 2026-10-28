@@ -25,11 +25,15 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
 
 
     private readonly HttpClient _httpClient = new HttpClient();
+    private const string BaseUri = "https://chat.deepseek.com";
     private const string CreatePowChallengeUri = "/api/v0/chat/create_pow_challenge";
     private const string CreateSessionUri = "/api/v0/chat_session/create";
     private const string CompletionPath = "/api/v0/chat/completion";
     private const string PowHeaderName = "x-ds-pow-response";
     private const string AlgorithmName = "DeepSeekHashV1";
+
+    private readonly string _authToken;
+    private readonly string _dsSessionId;
 
     private readonly JsonSerializerOptions _sharedJsonSerializerOptions = new JsonSerializerOptions
     {
@@ -37,28 +41,15 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
     };
 
     private readonly CreatePowChallengePayload _createPowChallengePayload = new(TargetPath: "/api/v0/chat/completion");
-    // private HttpRequestMessage NoPowMessage;
-    private readonly HttpRequestMessage _powMessage;
 
-    public DsWebChatClient(string authToken, string dsSessionId)
+    private readonly DsWebClientOptions _extraHeaderOptions;
+
+    public DsWebChatClient(string authToken, string dsSessionId, DsWebClientOptions? extraHeaderOptions = null)
     {
-        _httpClient.BaseAddress = new Uri("https://chat.deepseek.com");
-        _httpClient.DefaultRequestHeaders.Add("Authorization",
-            authToken.StartsWith("Bearer ") ? authToken : $"Bearer {authToken}");
-        _httpClient.DefaultRequestHeaders.Add("Cookie", $"ds_session_id={dsSessionId}");
-
-        // NoPowMessage = new HttpRequestMessage();
-        // NoPowMessage.Method = HttpMethod.Post;
-        // NoPowMessage.Headers.Add("Authorization",
-        //     authToken.StartsWith("Bearer ") ? authToken : $"Bearer {authToken}");
-        // NoPowMessage.Headers.Add("Cookie", $"ds_session_id={dsSessionId}");
-
-        _powMessage = new HttpRequestMessage();
-        _powMessage.Method = HttpMethod.Post;
-        _powMessage.Headers.Add("Authorization",
-            authToken.StartsWith("Bearer ") ? authToken : $"Bearer {authToken}");
-        _powMessage.Headers.Add("Cookie", $"ds_session_id={dsSessionId}");
-        _powMessage.Headers.Add("x-ds-pow-response", ""); // Placeholder for the PoW response header
+        _extraHeaderOptions = extraHeaderOptions ?? new DsWebClientOptions();
+        _authToken = authToken;
+        _dsSessionId = dsSessionId;
+        _httpClient.BaseAddress = new Uri(BaseUri);
 
         var assembly = Assembly.Load("DeepseekWebChatWrapper.Core");
         var wasmStream =
@@ -90,6 +81,27 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         }
     }
 
+    protected HttpRequestMessage CreateDsRequest()
+    {
+        var request = new HttpRequestMessage();
+        request.Method = HttpMethod.Post;
+        request.Headers.Add("Authorization",
+            _authToken.StartsWith("Bearer ") ? _authToken : $"Bearer {_authToken}");
+        request.Headers.Add("Cookie", $"ds_session_id={_dsSessionId}");
+
+        request.Headers.Add("Cookie", $"ds_session_id={_dsSessionId}");
+        request.Headers.Add("User-Agent", _extraHeaderOptions.UserAgent);
+        request.Headers.Add("x-client-bundle-id", _extraHeaderOptions.XClientBundleId);
+        request.Headers.Add("x-client-locale", _extraHeaderOptions.XClientLocale);
+        request.Headers.Add("x-client-platform", _extraHeaderOptions.XClientPlatform);
+        request.Headers.Add("x-client-timezone-offset", _extraHeaderOptions.XClientTimeZoneOffset.ToString());
+        request.Headers.Add("x-client-version", _extraHeaderOptions.XClientVersion);
+        if (!string.IsNullOrEmpty(_extraHeaderOptions.XDeviceId))
+            request.Headers.Add("x-device-id", _extraHeaderOptions.XDeviceId);
+
+        return request;
+    }
+
     public async Task<ChallengeResponse> CreatePowChallengeAsync(CancellationToken cancellationToken = default)
     {
         // Typical response from the server looks like this:
@@ -113,10 +125,11 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         //         }
         //     }
         // }
-        var response =
-            await _httpClient.PostAsync(CreatePowChallengeUri,
-                JsonContent.Create(_createPowChallengePayload, options: _sharedJsonSerializerOptions),
-                cancellationToken);
+        var request = CreateDsRequest();
+        request.RequestUri = new Uri(CreatePowChallengeUri, UriKind.Relative);
+        request.Content = JsonContent.Create(_createPowChallengePayload, options: _sharedJsonSerializerOptions);
+
+        var response = await _httpClient.SendAsync(request, cancellationToken);
         var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
         var doc = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
         try
@@ -146,7 +159,7 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         await _powChallengeSemaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
         try
         {
-            return await Task.Run(() => SolvePowChallenge(challengeResponse));
+            return await Task.Run(() => SolvePowChallenge(challengeResponse), cancellationToken);
         }
         finally
         {
@@ -177,34 +190,6 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         return answer;
     }
 
-    public void Dispose()
-    {
-        _engine.Dispose();
-        _module.Dispose();
-        _store.Dispose();
-        _linker.Dispose();
-        _httpClient.Dispose();
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        await CastAndDispose(_engine);
-        await CastAndDispose(_module);
-        await CastAndDispose(_store);
-        await CastAndDispose(_linker);
-        await CastAndDispose(_httpClient);
-
-        return;
-
-        static async ValueTask CastAndDispose(IDisposable resource)
-        {
-            if (resource is IAsyncDisposable resourceAsyncDisposable)
-                await resourceAsyncDisposable.DisposeAsync();
-            else
-                resource.Dispose();
-        }
-    }
-
     public async Task<string> CreateSessionAsync(CancellationToken cancellationToken = default)
     {
         // Typical response from the server looks like this:
@@ -233,7 +218,11 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         //         }
         //     }
         // }
-        var response = await _httpClient.PostAsync(CreateSessionUri, null, cancellationToken);
+        var request = CreateDsRequest();
+        request.RequestUri = new Uri(CreateSessionUri, UriKind.Relative);
+        request.Content = JsonContent.Create(new { }, options: _sharedJsonSerializerOptions);
+
+        var response = await _httpClient.SendAsync(request, cancellationToken);
         var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
         var doc = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
         try
@@ -255,7 +244,7 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
     /// <param name="prompt"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<string> RequestCompletionAsync(string prompt, CancellationToken cancellationToken = default)
+    public async Task<DsCompletionResponse> RequestCompletionAsync(string prompt, CancellationToken cancellationToken = default)
     {
         var payload = new CompletionRequest
         {
@@ -276,12 +265,143 @@ public class DsWebChatClient : IDisposable, IAsyncDisposable
         var powResponseBase64 =
             Convert.ToBase64String(
                 Encoding.UTF8.GetBytes(JsonSerializer.Serialize(powResponse, _sharedJsonSerializerOptions)));
-        _powMessage.RequestUri = new Uri(CompletionPath, UriKind.Relative);
-        _powMessage.Headers.Remove(PowHeaderName);
-        _powMessage.Headers.Add(PowHeaderName, powResponseBase64);
-        _powMessage.Content = JsonContent.Create(payload, options: _sharedJsonSerializerOptions);
-        var response = await _httpClient.SendAsync(_powMessage, cancellationToken);
-        return await response.Content.ReadAsStringAsync(cancellationToken);
+        var request = CreateDsRequest();
+        request.RequestUri = new Uri(CompletionPath, UriKind.Relative);
+        request.Headers.Add(PowHeaderName, powResponseBase64);
+        request.Content = JsonContent.Create(payload, options: _sharedJsonSerializerOptions);
+        var response = await _httpClient.SendAsync(request, cancellationToken);
+
+        // Consume Sse response
+        var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+        return await ParseSseAsync(stream, cancellationToken);
+    }
+
+    public static async Task<DsCompletionResponse> ParseSseAsync(Stream stream, CancellationToken cancellationToken)
+    {
+        var reader = new StreamReader(stream);
+        var thinkingBuilder = new StringBuilder();
+        var responseBuilder = new StringBuilder();
+        StringBuilder? currentBuilder = null;
+        while (true)
+        {
+            var line = await reader.ReadLineAsync(cancellationToken);
+            if (line is null)
+                break;
+
+            if (line.StartsWith("data: {"))
+            {
+                var json = line.Substring("data: ".Length);
+                using var doc = JsonDocument.Parse(json);
+                // Response start
+                if (line[8] == 'v')
+                {
+                    if (line[11] == '{')
+                    {
+                        var fragment = doc.RootElement.GetProperty("v").GetProperty("response")
+                            .GetProperty("fragments")
+                            .EnumerateArray().ElementAt(0);
+                        SwitchBuilder(fragment);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            var content = doc.RootElement.GetProperty("v").GetString() ?? "";
+
+                            if (currentBuilder is null)
+                                throw new DataException(
+                                    "Received SSE fragment before the first fragment type was determined");
+                            currentBuilder.Append(content);
+                        }
+                        catch (Exception e)
+                        {
+                            throw new Exception($"Failed to parse SSE fragment from response: {doc.RootElement}", e);
+                        }
+                    }
+                }
+                else if (line[8] == 'p')
+                {
+                    if (currentBuilder is null)
+                        throw new DataException("Received SSE fragment before the first fragment type was determined");
+                    try
+                    {
+                        var type = doc.RootElement.GetProperty("p").GetString();
+                        switch (type)
+                        {
+                            case "response/fragments/-1/content":
+                                currentBuilder.Append(doc.RootElement.GetProperty("v").GetString());
+                                break;
+                            case "response/fragments":
+                                SwitchBuilder(doc.RootElement.GetProperty("v").EnumerateArray().ElementAt(0));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception($"Failed to parse SSE fragment from response: {doc.RootElement}", e);
+                    }
+                }
+            }
+        }
+
+        return new DsCompletionResponse
+        {
+            Thinking = thinkingBuilder.ToString(),
+            Response = responseBuilder.ToString()
+        };
+
+        void SwitchBuilder(JsonElement fragment)
+        {
+            try
+            {
+                var firstFragmentType = fragment.GetProperty("type").GetString();
+                switch (firstFragmentType)
+                {
+                    case "THINK":
+                        currentBuilder = thinkingBuilder; break;
+                    case "RESPONSE": currentBuilder = responseBuilder; break;
+                    default:
+                        throw new DataException(
+                            $"Unknown fragment type: {fragment.GetProperty("type").GetString()}");
+                }
+
+                currentBuilder.Append(fragment.GetProperty("content").GetString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Failed to parse SSE fragment from response: {fragment}", e);
+            }
+        }
+    }
+
+    public void Dispose()
+    {
+        _engine.Dispose();
+        _module.Dispose();
+        _store.Dispose();
+        _linker.Dispose();
+        _httpClient.Dispose();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await CastAndDispose(_engine);
+        await CastAndDispose(_module);
+        await CastAndDispose(_store);
+        await CastAndDispose(_linker);
+        await CastAndDispose(_httpClient);
+
+        return;
+
+        static async ValueTask CastAndDispose(IDisposable resource)
+        {
+            if (resource is IAsyncDisposable resourceAsyncDisposable)
+                await resourceAsyncDisposable.DisposeAsync();
+            else
+                resource.Dispose();
+        }
     }
 }
 
@@ -321,3 +441,40 @@ public record PowHeader
     public required string Signature { get; init; }
     public required string TargetPath { get; init; }
 }
+
+public record DsWebClientOptions
+{
+    public string UserAgent { get; init; } =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36";
+
+    public string XClientBundleId { get; init; } = "com.deepseek.chat";
+    public string XClientLocale { get; init; } = "zh_CN";
+    public string XClientPlatform { get; init; } = "web";
+    public long XClientTimeZoneOffset { get; init; } = 28800;
+    public string XClientVersion { get; init; } = "2.7.0";
+    public string? XDeviceId { get; init; } = null;
+}
+
+public record DsCompletionResponse
+{
+    public string Thinking { get; init; } = string.Empty;
+    public string Response { get; init; } = string.Empty;
+}
+
+// internal record DsSseFragment
+// {
+//     // {
+//     //     "id": 2,
+//     //     "type": "THINK",
+//     //     "content": "The",
+//     //     "elapsed_secs": null,
+//     //     "references": [],
+//     //     "stage_id": 1
+//     // }
+//     public int Id { get; init; }
+//     public string Type { get; init; } = string.Empty;
+//     public string Content { get; init; } = string.Empty;
+//     public double? ElapsedSecs { get; init; } = null;
+//     public List<string> References { get; init; } = new List<string>();
+//     public int StageId { get; init; }
+// }

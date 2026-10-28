@@ -64,7 +64,254 @@ public class TestDsWebChatClient
     public async Task TestRequestCompletion_Simple()
     {
         var response = await _dsWebChatClient.RequestCompletionAsync("Hello, how are you?");
-        _output.WriteLine("Response:\n" + response);
         Assert.NotNull(response);
+        Assert.NotEmpty(response.Thinking);
+        Assert.NotEmpty(response.Response);
+        _output.WriteLine("Response:\nThinking:\n" + response.Thinking + "\nResponse:\n" + response.Response);
+    }
+
+    [Fact]
+    public async Task TestParseSseAsync()
+    {
+        var sse = """
+                  DeepseekWebChatWrapper.Test.TestDsWebChatClient.TestRequestCompletion_Simple
+
+                  Response:
+                  event: ready
+                  data: {"request_message_id":1,"response_message_id":2,"model_type":"default"}
+
+                  event: update_session
+                  data: {"updated_at":1793153076.786095}
+
+                  data: {"v":{"response":{"message_id":2,"parent_id":1,"model":"","role":"ASSISTANT","thinking_enabled":true,"ban_edit":false,"ban_regenerate":false,"status":"WIP","incomplete_message":null,"accumulated_token_usage":0,"feedback":null,"inserted_at":1793153076.773787,"search_enabled":true,"fragments":[{"id":2,"type":"THINK","content":"The","elapsed_secs":null,"references":[],"stage_id":1}],"conversation_mode":"DEFAULT","has_pending_fragment":false,"auto_continue":false,"search_triggered":false,"extra_search_providers":[]}}}
+
+                  data: {"p":"response/fragments/-1/content","o":"APPEND","v":" user"}
+
+                  data: {"v":" is"}
+
+                  data: {"v":" greeting"}
+
+                  data: {"v":" me"}
+
+                  data: {"v":" in"}
+
+                  data: {"v":" English"}
+
+                  data: {"v":"."}
+
+                  data: {"v":" This"}
+
+                  data: {"v":" is"}
+
+                  data: {"v":" a"}
+
+                  data: {"v":" simple"}
+
+                  data: {"v":" social"}
+
+                  data: {"v":" interaction"}
+
+                  data: {"v":" with"}
+
+                  data: {"v":" no"}
+
+                  data: {"v":" technical"}
+
+                  data: {"v":" or"}
+
+                  data: {"v":" substantive"}
+
+                  data: {"v":" request"}
+
+                  data: {"v":","}
+
+                  data: {"v":" so"}
+
+                  data: {"v":" I"}
+
+                  data: {"v":" should"}
+
+                  data: {"v":" respond"}
+
+                  data: {"v":" warmly"}
+
+                  data: {"v":" and"}
+
+                  data: {"v":" naturally"}
+
+                  data: {"v":"."}
+
+                  data: {"v":" I"}
+
+                  data: {"v":"'ll"}
+
+                  data: {"v":" acknowledge"}
+
+                  data: {"v":" the"}
+
+                  data: {"v":" greeting"}
+
+                  data: {"v":","}
+
+                  data: {"v":" briefly"}
+
+                  data: {"v":" express"}
+
+                  data: {"v":" that"}
+
+                  data: {"v":" I"}
+
+                  data: {"v":"'m"}
+
+                  data: {"v":" doing"}
+
+                  data: {"v":" well"}
+
+                  data: {"v":","}
+
+                  data: {"v":" and"}
+
+                  data: {"v":" leave"}
+
+                  data: {"v":" the"}
+
+                  data: {"v":" door"}
+
+                  data: {"v":" open"}
+
+                  data: {"v":" for"}
+
+                  data: {"v":" the"}
+
+                  data: {"v":" user"}
+
+                  data: {"v":" to"}
+
+                  data: {"v":" share"}
+
+                  data: {"v":" what"}
+
+                  data: {"v":" they"}
+
+                  data: {"v":" need"}
+
+                  data: {"v":"."}
+
+                  data: {"v":" Since"}
+
+                  data: {"v":" the"}
+
+                  data: {"v":" user"}
+
+                  data: {"v":" wrote"}
+
+                  data: {"v":" in"}
+
+                  data: {"v":" English"}
+
+                  data: {"v":","}
+
+                  data: {"v":" I"}
+
+                  data: {"v":"'ll"}
+
+                  data: {"v":" reply"}
+
+                  data: {"v":" in"}
+
+                  data: {"v":" English"}
+
+                  data: {"v":" to"}
+
+                  data: {"v":" match"}
+
+                  data: {"v":"."}
+
+                  data: {"v":" I"}
+
+                  data: {"v":"'ll"}
+
+                  data: {"v":" keep"}
+
+                  data: {"v":" it"}
+
+                  data: {"v":" friendly"}
+
+                  data: {"v":" and"}
+
+                  data: {"v":" concise"}
+
+                  data: {"v":","}
+
+                  data: {"v":" then"}
+
+                  data: {"v":" invite"}
+
+                  data: {"v":" them"}
+
+                  data: {"v":" to"}
+
+                  data: {"v":" continue"}
+
+                  data: {"v":"."}
+
+                  data: {"p":"response/fragments/-1/elapsed_secs","o":"SET","v":0.932027441}
+
+                  data: {"p":"response/fragments","o":"APPEND","v":[{"id":3,"type":"RESPONSE","content":"Hello","references":[],"stage_id":1}]}
+
+                  data: {"p":"response/fragments/-1/content","v":"!"}
+
+                  data: {"v":" I"}
+
+                  data: {"v":"'m"}
+
+                  data: {"v":" doing"}
+
+                  data: {"v":" well"}
+
+                  data: {"v":","}
+
+                  data: {"v":" thanks"}
+
+                  data: {"v":" for"}
+
+                  data: {"v":" asking"}
+
+                  data: {"v":"."}
+
+                  data: {"v":" How"}
+
+                  data: {"v":" can"}
+
+                  data: {"v":" I"}
+
+                  data: {"v":" help"}
+
+                  data: {"v":" you"}
+
+                  data: {"v":" today"}
+
+                  data: {"v":"?"}
+
+                  data: {"p":"response","o":"BATCH","v":[{"p":"accumulated_token_usage","v":81},{"p":"quasi_status","v":"FINISHED"}]}
+
+                  data: {"p":"response/status","o":"SET","v":"FINISHED"}
+
+                  event: update_session
+                  data: {"updated_at":1793153077.485468}
+
+                  event: title
+                  data: {"content":"Greeting reply"}
+
+                  event: close
+                  data: {"click_behavior":"none","auto_resume":false}
+                  """;
+        MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(sse));
+        var result = await DsWebChatClient.ParseSseAsync(stream, CancellationToken.None);
+        Assert.NotNull(result);
+        Assert.NotNull(result.Thinking);
+        _output.WriteLine("Thinking:\n" + result.Thinking);
+        Assert.NotNull(result.Response);
+        _output.WriteLine("Response:\n" + result.Response);
     }
 }
