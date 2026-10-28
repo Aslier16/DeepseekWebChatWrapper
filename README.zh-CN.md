@@ -85,11 +85,59 @@ double answer = await client.SolvePowChallengeAsync(challenge);
 
 目前还没有并发限制，请自行控制请求频率。
 
+## 错误处理
+
+库抛出的业务异常都继承自 `DsWebChatException`（参数错误、取消、已释放对象等情况使用标准 .NET 异常）：
+
+| 异常 | 含义 |
+|---|---|
+| `DsWebChatInitializationException` | 内嵌的 PoW WASM 运行时无法初始化。包可能损坏，或 Wasmtime 版本不兼容。 |
+| `DsWebChatTransportException` | 网络、DNS、TLS 或读取响应流失败。 |
+| `DsWebChatTimeoutException` | `RequestTimeout` 或 `CompletionTimeout` 超时。 |
+| `DsWebChatAuthenticationException` | HTTP 401/403：`Authorization` token 或 `ds_session_id` cookie 无效或已过期。 |
+| `DsWebChatRateLimitException` | 本地限流器拒绝了请求，或服务端返回 HTTP 429。可通过 `IsRemote`、`RetryAfter` 判断。 |
+| `DsWebChatApiException` | HTTP 非成功状态码，或服务端业务错误码。可查看 `StatusCode`、`ApiCode`、`BizCode`、`ResponseBodySnippet`。 |
+| `DsWebChatProtocolException` | 响应或 SSE 流不符合预期格式。可查看 `SseLineNumber`、`ResponseSnippet`。 |
+| `DsWebChatPowException` | 内嵌求解器无法解出工作量证明挑战。 |
+
+所有库异常都带有 `Operation` 属性，表示失败的操作名。异常中的响应摘要会截断，且不会包含凭证。
+
+调用方传入的 `CancellationToken` 被取消时抛 `OperationCanceledException`；库内部超时抛
+`DsWebChatTimeoutException`，两者可以分开处理。
+
+```csharp
+try
+{
+    var result = await client.RequestCompletionAsync(prompt, cancellationToken);
+}
+catch (DsWebChatAuthenticationException)
+{
+    // 从浏览器 DevTools 重新复制 Authorization 和 ds_session_id。
+}
+catch (DsWebChatRateLimitException ex)
+{
+    // 服务端 429：退避后重试，可参考 ex.RetryAfter。
+    // 本地限流：调整传给 DsWebChatClient 的 RateLimiter。
+}
+catch (DsWebChatTimeoutException ex)
+{
+    // 调整 RequestTimeout / CompletionTimeout，或检查网络。
+}
+catch (DsWebChatApiException ex)
+{
+    // 记录 ex.StatusCode、ex.ApiCode、ex.BizCode、ex.ResponseBodySnippet。
+}
+catch (DsWebChatException ex)
+{
+    // 其他库异常。
+}
+```
+
 ## 项目结构
 
 ```
 DeepseekWebChatWrapper.Core/   库（客户端、PoW 求解、SSE 解析、DTO）
-DeepseekWebChatWrapper.Test/   调用真实服务端的 xUnit 测试
+DeepseekWebChatWrapper.Test/   xUnit 测试（集成测试会调用真实服务端）
 ```
 
 ## 测试

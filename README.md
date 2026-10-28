@@ -93,11 +93,62 @@ completion has no timeout by default; short calls default to 60 seconds.
 
 Note that there is no restriction of concurrency yet, control the request frequency on your own
 
+## Error handling
+
+Errors raised by the library derive from `DsWebChatException` (except standard .NET exceptions such
+as argument, cancellation, and object-disposed exceptions):
+
+| Exception | Meaning |
+|---|---|
+| `DsWebChatInitializationException` | The embedded PoW WASM runtime could not be initialized. The package may be corrupted or the Wasmtime version incompatible. |
+| `DsWebChatTransportException` | Network, DNS, TLS, or stream read failure. |
+| `DsWebChatTimeoutException` | `RequestTimeout` or `CompletionTimeout` elapsed. |
+| `DsWebChatAuthenticationException` | HTTP 401/403: the auth token or `ds_session_id` cookie is invalid or expired. |
+| `DsWebChatRateLimitException` | The local rate limiter rejected the request, or DeepSeek returned HTTP 429. Check `IsRemote` and `RetryAfter`. |
+| `DsWebChatApiException` | Non-success HTTP status or a DeepSeek business error code. Check `StatusCode`, `ApiCode`, `BizCode`, and `ResponseBodySnippet`. |
+| `DsWebChatProtocolException` | The response or SSE stream did not match the expected format. Check `SseLineNumber` and `ResponseSnippet`. |
+| `DsWebChatPowException` | The embedded solver could not solve the proof-of-work challenge. |
+
+Every library exception exposes `Operation`, the name of the operation that failed. Response snippets
+in exceptions are truncated, and credentials are never included.
+
+A caller-provided cancellation token that is canceled produces `OperationCanceledException`.
+Timeouts enforced by the library produce `DsWebChatTimeoutException` instead, so the two cases can
+be handled separately.
+
+```csharp
+try
+{
+    var result = await client.RequestCompletionAsync(prompt, cancellationToken);
+}
+catch (DsWebChatAuthenticationException)
+{
+    // Copy a fresh Authorization header and ds_session_id cookie from the browser DevTools.
+}
+catch (DsWebChatRateLimitException ex)
+{
+    // Remote (HTTP 429): back off, optionally using ex.RetryAfter.
+    // Local: adjust the RateLimiter passed to DsWebChatClient.
+}
+catch (DsWebChatTimeoutException ex)
+{
+    // Increase RequestTimeout / CompletionTimeout, or check the network.
+}
+catch (DsWebChatApiException ex)
+{
+    // Log ex.StatusCode, ex.ApiCode, ex.BizCode, and ex.ResponseBodySnippet.
+}
+catch (DsWebChatException ex)
+{
+    // Any other library error.
+}
+```
+
 ## Project layout
 
 ```
 DeepseekWebChatWrapper.Core/   the library (client, PoW solver, SSE parser, DTOs)
-DeepseekWebChatWrapper.Test/   xUnit tests that call the real server
+DeepseekWebChatWrapper.Test/   xUnit tests (integration tests call the real server)
 ```
 
 ## Tests

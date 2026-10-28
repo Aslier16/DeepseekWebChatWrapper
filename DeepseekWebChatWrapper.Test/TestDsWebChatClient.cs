@@ -13,8 +13,11 @@ public class TestDsWebChatClient
     {
         _output = output;
         var doc = JsonDocument.Parse(File.ReadAllText("TestVars.json"));
-        _dsWebChatClient = new DsWebChatClient(doc.RootElement.GetProperty("authToken").GetString(),
-            doc.RootElement.GetProperty("dsSessionId").GetString());
+        _dsWebChatClient = new DsWebChatClient(
+            doc.RootElement.GetProperty("authToken").GetString() ??
+            throw new InvalidOperationException("TestVars.json must contain 'authToken'."),
+            doc.RootElement.GetProperty("dsSessionId").GetString() ??
+            throw new InvalidOperationException("TestVars.json must contain 'dsSessionId'."));
     }
 
     [Fact]
